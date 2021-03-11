@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ChakraProvider, Box, Grid, theme, Text, Flex } from "@chakra-ui/react";
+import React from "react";
+import { ChakraProvider, Box, Grid, theme } from "@chakra-ui/react";
 import { Card, CardSideProps } from "./packages/memory";
 import { useImmer } from "use-immer";
 
