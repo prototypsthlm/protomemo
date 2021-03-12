@@ -1,52 +1,23 @@
 import React from "react";
 import { ChakraProvider, Box, Grid, theme } from "@chakra-ui/react";
-import { Card, CardSideProps } from "./packages/memory";
 import { useImmer } from "use-immer";
+import { Deck } from "./packages/memory";
+import { createCardList, shuffleCardList } from "./packages/memory/domain/card";
+import { PrototypGangMock } from "./packages/memory/mock-data/prototyp-gang";
+import { ContentType, ImageContent } from "./packages/memory/domain/content";
 
-type Sides = [CardSideProps, CardSideProps];
+const cardList = shuffleCardList(createCardList(PrototypGangMock));
 
-interface Card {
-  id: string;
-  flipped: boolean;
-  sides: Sides;
-}
-
-const data: Card[] = [
-  {
-    id: "1",
-    flipped: false,
-    sides: [
-      {
-        type: "text",
-        content: "Front",
-        side: "front",
-      },
-      {
-        type: "text",
-        content: "Back",
-        side: "back",
-      },
-    ],
-  },
-];
+const prototypCover: ImageContent = {
+  type: ContentType.Image,
+  content:
+    "https://images.ctfassets.net/hjzae6fpsq6v/3XhlMmZzpXKnz9zScNzHNv/a5bd3808c87f4f17860100e9d11ff754/Artboard.jpg",
+};
 
 export const App = () => {
-  const [cards, setCard] = useImmer<Card[]>(data);
-  const handleClick = (id: string) => {
-    setCard((draft) => {
-      const index = draft.findIndex((card) => card.id === id);
-      draft[index].flipped = true;
-    });
-  };
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3} backgroundColor="gray.100">
-          {cards.map((card) => (
-            <Card key={card.id} onClick={handleClick} {...card} />
-          ))}
-        </Grid>
-      </Box>
+      <Deck cards={cardList} cover={prototypCover} />
     </ChakraProvider>
   );
 };

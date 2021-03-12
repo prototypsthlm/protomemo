@@ -1,24 +1,21 @@
 import React from "react";
 import { Flex } from "@chakra-ui/layout";
 import { CardSide } from "./card-side";
-
-export interface CardSideProps {
-  type: "image" | "text";
-  side: "front" | "back";
-  content: string;
-}
+import { Content, ImageContent } from "../../domain/content";
 
 interface CardProps {
-  id: string;
+  id: number;
   flipped?: boolean;
-  onClick?: (id: string) => void;
-  sides: [CardSideProps, CardSideProps];
+  onClick?: (id: number) => void;
+  front: ImageContent;
+  back: Content;
 }
 
 export const Card: React.FC<CardProps> = ({
   flipped = false,
   onClick = () => {},
-  sides,
+  front,
+  back,
   id,
 }) => {
   const handleClick = () => onClick(id);
@@ -26,8 +23,8 @@ export const Card: React.FC<CardProps> = ({
   return (
     <Flex
       sx={{ perspective: "40rem" }}
-      height="3xs"
-      width="3xs"
+      height={48}
+      width={48}
       onClick={handleClick}
     >
       <Flex
@@ -39,14 +36,12 @@ export const Card: React.FC<CardProps> = ({
           transformStyle: "preserve-3d",
         }}
       >
-        {sides.map((side) => (
-          <CardSide
-            key={side.side}
-            type={side.type}
-            orientation={side.side}
-            content={side.content}
-          />
-        ))}
+        <CardSide
+          type={front.type}
+          orientation="front"
+          content={front.content}
+        />
+        <CardSide type={back.type} orientation="back" content={back.content} />
       </Flex>
     </Flex>
   );
