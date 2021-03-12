@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  ChakraProvider,
-  Box,
-  Grid,
-  theme,
-  SimpleGrid,
-  Center,
-} from "@chakra-ui/react";
+import { ChakraProvider, theme, SimpleGrid, Center } from "@chakra-ui/react";
 import { Card } from "../card";
 import { useImmer } from "use-immer";
-import { Card as CardModel, CardList, ImageCard } from "../../domain/card";
+import { Card as CardModel, CardList } from "../../domain/card";
 import { ImageContent } from "../../domain/content";
 
 interface DeckProps {
