@@ -1,7 +1,10 @@
 import React from "react";
-import { Flex } from "@chakra-ui/layout";
+import { Center, Flex } from "@chakra-ui/layout";
 import { CardSide } from "./card-side";
 import { Content, ImageContent } from "../../domain/content";
+import { ScaleFade } from "@chakra-ui/transition";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import Icon from "@chakra-ui/icon";
 
 interface CardProps {
   id: number;
@@ -9,10 +12,12 @@ interface CardProps {
   onClick?: (id: number) => void;
   front: ImageContent;
   back: Content;
+  matched?: boolean;
 }
 
 export const Card: React.FC<CardProps> = ({
   flipped = false,
+  matched = false,
   onClick = () => {},
   front,
   back,
@@ -26,7 +31,21 @@ export const Card: React.FC<CardProps> = ({
       height={48}
       width={48}
       onClick={handleClick}
+      position="relative"
     >
+      <ScaleFade initialScale={0.9} in={matched}>
+        <Center
+          position="absolute"
+          height="100%"
+          width="100%"
+          zIndex={5}
+          backgroundColor="whiteAlpha.500"
+          borderRadius="3xl"
+        >
+          <Icon as={IoCheckmarkCircleOutline} w={24} h={24} color="green.500" />
+        </Center>
+      </ScaleFade>
+
       <Flex
         flex={1}
         borderRadius="3xl"
