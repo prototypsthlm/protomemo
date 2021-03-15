@@ -1,6 +1,5 @@
 import React from "react";
-import { ChakraProvider, Box, Grid, theme } from "@chakra-ui/react";
-import { useImmer } from "use-immer";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import { Deck } from "./packages/memory";
 import { createCardList, shuffleCardList } from "./packages/memory/domain/card";
 import { PrototypGangMock } from "./packages/memory/mock-data/prototyp-gang";
