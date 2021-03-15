@@ -1,9 +1,10 @@
 import React from "react";
-import { SimpleGrid, Center, Button, Slide } from "@chakra-ui/react";
+import { SimpleGrid, Center } from "@chakra-ui/react";
 import { Card } from "../card";
 import { useImmer } from "use-immer";
 import { Card as CardModel, CardList } from "../../domain/card";
 import { ImageContent } from "../../domain/content";
+import { MatchResultSheet } from "../match-result-sheet";
 
 interface DeckProps {
   cards: CardList;
@@ -69,22 +70,11 @@ export const Deck: React.FC<DeckProps> = ({ cards: initialCards, cover }) => {
           />
         ))}
       </SimpleGrid>
-      <Slide direction="bottom" in={isSecondCard} style={{ zIndex: 10 }}>
-        <Center
-          backgroundColor={match ? "green.100" : "red.100"}
-          // sx={{ backdropFilter: "blur(10px)" }}
-          height="2xs"
-          width="100%"
-        >
-          <Button
-            size="lg"
-            colorScheme={match ? "green" : "red"}
-            onClick={handleNextRound}
-          >
-            {match ? "Continue" : "Try again"}
-          </Button>
-        </Center>
-      </Slide>
+      <MatchResultSheet
+        match={match}
+        isOpen={isSecondCard}
+        onConfirm={handleNextRound}
+      />
     </Center>
   );
 };
