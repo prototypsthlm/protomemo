@@ -2,12 +2,14 @@ import { Game } from "../domain";
 
 export const gamesData: Game[] = [
   {
+    id: "1",
     title: "Protomemo",
     description: "Get to know your colleauges!",
     cover:
       "https://images.ctfassets.net/hjzae6fpsq6v/3XhlMmZzpXKnz9zScNzHNv/a5bd3808c87f4f17860100e9d11ff754/Artboard.jpg",
   },
   {
+    id: "2",
     title: "Ikea-O-rama",
     description: "How well do you know your furniture?",
     cover:
