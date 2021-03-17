@@ -1,5 +1,6 @@
 import { shuffle } from "../../../shared";
 import { ContentList, ContentPair, ImageContent, TextContent } from "./content";
+import { Level } from "./level";
 
 export interface TextCard extends TextContent {
   id: number;
@@ -16,12 +17,6 @@ export interface ImageCard extends ImageContent {
 export type Card = TextCard | ImageCard;
 
 export type CardList = Card[];
-
-export enum Level {
-  "Duh!" = "Duh!",
-  "Lagom" = "Lagom",
-  "Mastery" = "Mastery",
-}
 
 export const levelConfig: Record<Level, number> = {
   "Duh!": 6,
