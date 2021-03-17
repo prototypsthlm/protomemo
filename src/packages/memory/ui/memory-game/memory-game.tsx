@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import { Box, Center } from "@chakra-ui/layout";
 import { Deck } from "../deck";
-import {
-  createCardList,
-  shuffleCardList,
-  ContentType,
-  ImageContent,
-  Level,
-} from "../../domain";
+import { ContentType, generateGame, ImageContent, Level } from "../../domain";
 import { PrototypGangMock } from "../../mock-data/prototyp-gang";
 import { StartGame } from "../start-game";
 
-const cardList = shuffleCardList(createCardList(PrototypGangMock));
+const getCardsFromLevel = generateGame(PrototypGangMock);
 
 const prototypCover: ImageContent = {
   type: ContentType.Image,
@@ -24,10 +18,11 @@ export const MemoryGame = () => {
   const onSetLevel = (level: Level) => {
     setLevel(level);
   };
+
   return (
     <Center bgColor="gray.100" minHeight="100vh">
       {level ? (
-        <Deck cards={cardList} cover={prototypCover} />
+        <Deck cards={getCardsFromLevel(level)} cover={prototypCover} />
       ) : (
         <StartGame onSelectLevel={onSetLevel} />
       )}

@@ -24,7 +24,7 @@ export const levelConfig: Record<Level, number> = {
   Mastery: 16,
 };
 
-export const pickItems = (level: Level) => (content: ContentList) =>
+const pickItems = (level: Level) => (content: ContentList) =>
   shuffle(content).slice(0, levelConfig[level]);
 
 const createCardsFromContentPair = (index: number) => (
@@ -37,11 +37,15 @@ const createCardsFromContentPair = (index: number) => (
     ...content,
   }));
 
-export const createCardList = (list: ContentList): CardList => {
+const createCardList = (list: ContentList): CardList => {
   return list.reduce<CardList>((accum, listItem, index) => {
     const cardPair = createCardsFromContentPair(index)(listItem);
     return accum.concat(cardPair);
   }, []);
 };
 
-export const shuffleCardList = (cardList: CardList) => shuffle(cardList);
+export const generateGame = (list: ContentList) => (level: Level) => {
+  const selectedContent = pickItems(level)(list);
+  const shuffledContent = shuffle(selectedContent);
+  return shuffle(createCardList(shuffledContent));
+};
