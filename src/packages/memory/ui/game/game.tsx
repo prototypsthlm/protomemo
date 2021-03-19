@@ -1,5 +1,5 @@
 import React from "react";
-import { Center } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import { useImmer } from "use-immer";
 import {
   Deck as CardList,
@@ -11,6 +11,7 @@ import {
 import { MatchResultSheet } from "../match-result-sheet";
 import { Deck } from "../deck";
 import { Game as GameType } from "../../domain";
+import { TopBar } from "../top-bar";
 
 interface GameProps {
   game: GameType;
@@ -39,13 +40,20 @@ export const Game: React.FC<GameProps> = ({ game }) => {
   };
 
   return (
-    <Center bgColor="gray.100">
-      <Deck cards={cards} cover={game.cover} onSelectCard={handleCardSelect} />
+    <Box>
+      <TopBar />
+      <Center>
+        <Deck
+          cards={cards}
+          cover={game.cover}
+          onSelectCard={handleCardSelect}
+        />
+      </Center>
       <MatchResultSheet
         match={match}
         isOpen={isSecondCard}
         onConfirm={handleNextRound}
       />
-    </Center>
+    </Box>
   );
 };
