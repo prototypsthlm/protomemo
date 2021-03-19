@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import { Box, Center, Flex, Heading } from "@chakra-ui/layout";
-import { Deck } from "../deck";
-import { ContentType, generateGame, ImageContent, Level } from "../../domain";
-import { PrototypGangMock } from "../../mock-data/prototyp-gang";
+import { generateGame, Level } from "../../domain";
 import { StartGame } from "../start-game";
 import Icon from "@chakra-ui/icon";
 import { IoClose } from "react-icons/io5";
+import { Game } from "../game";
+import { mockGames } from "../../mock-data/mock-games";
 
-const getCardsFromLevel = generateGame(PrototypGangMock);
+const gamesFromMock = generateGame(mockGames);
 
-const prototypCover: ImageContent = {
-  type: ContentType.Image,
-  content:
-    "https://images.ctfassets.net/hjzae6fpsq6v/3XhlMmZzpXKnz9zScNzHNv/a5bd3808c87f4f17860100e9d11ff754/Artboard.jpg",
-};
+interface GameLayoutProps {
+  gameId: string;
+}
 
-export const MemoryGame = () => {
+export const GameLayout: React.FC<GameLayoutProps> = ({ gameId }) => {
   const [level, setLevel] = useState<Level | null>(null);
+
   const onSetLevel = (level: Level) => {
     setLevel(level);
   };
 
+  const getGame = gamesFromMock(gameId);
+
   return (
-    <Box bgColor="gray.100">
+    <Box bgColor="gray.100" minHeight="100vh">
       <Flex
         justifyContent="center"
         alignItems="center"
@@ -34,9 +35,9 @@ export const MemoryGame = () => {
         </Heading>
         <Icon as={IoClose} marginLeft="auto" width={12} height={12} />
       </Flex>
-      <Center minHeight="100vh">
+      <Center>
         {level ? (
-          <Deck cards={getCardsFromLevel(level)} cover={prototypCover} />
+          <Game game={getGame(level)} />
         ) : (
           <StartGame onSelectLevel={onSetLevel} />
         )}

@@ -1,6 +1,6 @@
 import React from "react";
-import { MemoryGame } from "../packages/memory";
+import { GameLayout } from "../packages/memory";
 
 export const MemoryPage = () => {
-  return <MemoryGame />;
+  return <GameLayout gameId="protomemo" />;
 };
