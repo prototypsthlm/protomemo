@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
+import { Flex, Heading } from "@chakra-ui/layout";
 import { ContentType } from "../../domain/content";
 import { Image } from "@chakra-ui/image";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Heading, Stack, Text } from "@chakra-ui/layout";
+import { Heading, Stack, Text } from "@chakra-ui/layout";
 import { Radio, RadioGroup } from "@chakra-ui/radio";
 import { Level } from "../../domain";
 import { Button } from "@chakra-ui/button";

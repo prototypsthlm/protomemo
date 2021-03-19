@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, Heading, HStack, Text, VStack } from "@chakra-ui/layout";
+import { Box, Heading, HStack, Text, VStack } from "@chakra-ui/layout";
 import { GamesCollection } from "../../domain";
 import { Image } from "@chakra-ui/image";
 import { Link } from "react-router-dom";

@@ -1,6 +1,4 @@
-import { shuffle } from "../../../shared";
-import { ContentList, ContentPair, ImageContent, TextContent } from "./content";
-import { Level, levelConfig } from "./level";
+import { ContentPair, ImageContent, TextContent } from "./content";
 
 export interface TextCard extends TextContent {
   id: number;

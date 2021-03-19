@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, Heading, VStack } from "@chakra-ui/layout";
+import { Center, Heading, VStack } from "@chakra-ui/layout";
 import { GamesList } from "../packages/games/ui";
 import { gamesData } from "../packages/games/mock-data";
 
