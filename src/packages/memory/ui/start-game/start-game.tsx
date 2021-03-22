@@ -15,7 +15,7 @@ export const StartGame: React.FC<StartGameProps> = ({
 }) => {
   const [level, setLevel] = useState<Level>(Level.Lagom);
   return (
-    <Center>
+    <Center height="100vh">
       <Stack direction="column" spacing={8} alignItems="center">
         <Heading>Welcome to {gameTitle}</Heading>
         <Text>Pick a level you can handle!</Text>

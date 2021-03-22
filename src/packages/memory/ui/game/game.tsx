@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Center } from "@chakra-ui/react";
 import { useImmer } from "use-immer";
 import {
@@ -12,15 +12,19 @@ import { MatchResultSheet } from "../match-result-sheet";
 import { Deck } from "../deck";
 import { Game as GameType } from "../../domain";
 import { TopBar } from "../top-bar";
+import { CloseGameAlert } from "../close-game-alert";
+import { useHistory } from "react-router";
 
 interface GameProps {
   game: GameType;
 }
 
 export const Game: React.FC<GameProps> = ({ game }) => {
+  const history = useHistory();
   const [cards, setCards] = useImmer<CardList>(game.deck);
   const isSecondCard = getIfSecondCard(cards);
   const match = isMatch(cards);
+  const [alertOpen, setAlertOpen] = useState<boolean>(false);
 
   const handleCardSelect = (index: number) => {
     if (isSecondCard) {
@@ -39,9 +43,27 @@ export const Game: React.FC<GameProps> = ({ game }) => {
     }
   };
 
+  const handleEndGame = () => {
+    setAlertOpen(true);
+  };
+
+  const onEndGame = () => {
+    history.replace("/");
+    setAlertOpen(false);
+  };
+
+  const onCancelEndGame = () => {
+    setAlertOpen(false);
+  };
+
   return (
     <Box>
-      <TopBar />
+      <CloseGameAlert
+        isOpen={alertOpen}
+        onConfirm={onEndGame}
+        onCancel={onCancelEndGame}
+      />
+      <TopBar onClose={handleEndGame} />
       <Center>
         <Deck
           cards={cards}
