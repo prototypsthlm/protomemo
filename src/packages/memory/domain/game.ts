@@ -1,4 +1,4 @@
-import { shuffle } from "../../../shared";
+import { shuffle } from "../../shared";
 import { GameData } from "../mock-data/mock-games";
 import { ContentList, ImageContent } from "./content";
 import { createDeck, Deck, matchedCards, unmatchedCards } from "./deck";
