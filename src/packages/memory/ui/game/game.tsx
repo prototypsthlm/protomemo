@@ -14,6 +14,7 @@ import { finished, Game as GameType, score } from "../../domain";
 import { TopBar } from "../top-bar";
 import { CloseGameAlert } from "../close-game-alert";
 import { useHistory } from "react-router";
+import { Celebration } from "../celebration";
 
 interface GameProps {
   game: GameType;
@@ -74,6 +75,7 @@ export const Game: React.FC<GameProps> = ({ game }) => {
           onSelectCard={handleCardSelect}
         />
       </Center>
+      {finishedGame && <Celebration onClose={onEndGame} />}
       <MatchResultSheet
         match={match}
         isOpen={isSecondCard}
