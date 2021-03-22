@@ -31,6 +31,7 @@ export const Card: React.FC<CardProps> = ({
       height={48}
       width={48}
       onClick={handleClick}
+      cursor="pointer"
       position="relative"
     >
       <ScaleFade initialScale={0.9} in={matched}>
