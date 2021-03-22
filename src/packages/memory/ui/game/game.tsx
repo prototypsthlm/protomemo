@@ -10,7 +10,7 @@ import {
 } from "../../domain/deck";
 import { MatchResultSheet } from "../match-result-sheet";
 import { Deck } from "../deck";
-import { Game as GameType } from "../../domain";
+import { Game as GameType, score } from "../../domain";
 import { TopBar } from "../top-bar";
 import { CloseGameAlert } from "../close-game-alert";
 import { useHistory } from "react-router";
@@ -25,6 +25,7 @@ export const Game: React.FC<GameProps> = ({ game }) => {
   const isSecondCard = getIfSecondCard(cards);
   const match = isMatch(cards);
   const [alertOpen, setAlertOpen] = useState<boolean>(false);
+  const currentScore = score(cards);
 
   const handleCardSelect = (index: number) => {
     if (isSecondCard) {
@@ -63,7 +64,7 @@ export const Game: React.FC<GameProps> = ({ game }) => {
         onConfirm={onEndGame}
         onCancel={onCancelEndGame}
       />
-      <TopBar onClose={handleEndGame} />
+      <TopBar onClose={handleEndGame} score={currentScore} />
       <Center>
         <Deck
           cards={cards}

@@ -5,12 +5,16 @@ import { IoClose } from "react-icons/io5";
 
 interface TopBarProps {
   onClose?: () => void;
+  score: number;
 }
 
-export const TopBar: React.FC<TopBarProps> = ({ onClose = () => {} }) => (
+export const TopBar: React.FC<TopBarProps> = ({
+  onClose = () => {},
+  score,
+}) => (
   <Flex justifyContent="center" alignItems="center" paddingY={8} paddingX={16}>
     <Heading size="md" marginLeft="auto">
-      Your score: 100
+      Your score: {score}
     </Heading>
     <Icon
       cursor="pointer"
