@@ -1,7 +1,7 @@
 import { shuffle } from "../../../shared";
 import { GameData } from "../mock-data/mock-games";
 import { ContentList, ImageContent } from "./content";
-import { createDeck, Deck, matchedCards } from "./deck";
+import { createDeck, Deck, matchedCards, unmatchedCards } from "./deck";
 import { Level, levelConfig } from "./level";
 
 export type Game = {
@@ -26,5 +26,7 @@ export const generateGame = ({ data, ...otherParams }: GameData) => (
     ...otherParams,
   };
 };
+
+export const finished = (deck: Deck) => unmatchedCards(deck).length === 0;
 
 export const score = (deck: Deck) => matchedCards(deck).length;

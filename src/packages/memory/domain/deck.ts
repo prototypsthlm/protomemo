@@ -17,6 +17,9 @@ export const getIfSecondCard = (deck: Deck) =>
 
 export const matchedCards = (deck: Deck) => deck.filter((card) => card.matched);
 
+export const unmatchedCards = (deck: Deck) =>
+  deck.filter((card) => !card.matched);
+
 export const resetCards = (deck: Deck) =>
   deck.map<Card>((card) =>
     isNewlyFlippedCard(card) ? { ...card, flipped: false } : card
