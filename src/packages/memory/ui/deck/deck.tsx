@@ -13,7 +13,7 @@ interface DeckProps {
 export const Deck: React.FC<DeckProps> = ({ cards, cover, onSelectCard }) => {
   return (
     <Center>
-      <SimpleGrid columns={6} spacing={8} p={2} maxWidth="7xl">
+      <SimpleGrid columns={6} spacing={8} p={2}>
         {cards.map(({ flipped, content, type, matched }, index) => (
           <Card
             matched={matched}

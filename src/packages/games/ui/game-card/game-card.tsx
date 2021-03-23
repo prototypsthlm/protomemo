@@ -16,6 +16,7 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
         _hover={{ boxShadow: "2xl" }}
         transition="0.2s ease-in"
         bgColor="white"
+        maxWidth="lg"
         boxShadow="lg"
         cursor="pointer"
         borderRadius="3xl"
