@@ -1,7 +1,8 @@
 import React from "react";
-import { ChakraProvider, theme } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { HomePage, MemoryPage } from "./pages";
+import { theme } from "./packages/shared";
 
 export const App = () => {
   return (

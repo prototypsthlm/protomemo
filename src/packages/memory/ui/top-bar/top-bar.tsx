@@ -13,7 +13,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   score,
 }) => (
   <Flex justifyContent="center" alignItems="center" paddingY={8} paddingX={16}>
-    <Heading size="md" marginLeft="auto">
+    <Heading size="lg" marginLeft="auto">
       Your score: {score}
     </Heading>
     <Icon

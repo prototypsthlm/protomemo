@@ -16,6 +16,7 @@ export const GamesList: React.FC<GamesListProps> = ({ games }) => {
           <Box
             _hover={{ boxShadow: "2xl" }}
             transition="0.2s ease-in"
+            bgColor="white"
             boxShadow="lg"
             cursor="pointer"
             borderRadius="3xl"
