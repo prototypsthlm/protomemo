@@ -25,6 +25,7 @@ export const CardSide: React.FC<CardSideProps> = ({
       minHeight="100%"
       overflow="auto"
       transition="0.3s box-shadow"
+      padding={orientation === "front" ? 0 : 2}
       _hover={{
         boxShadow: "xl",
       }}
