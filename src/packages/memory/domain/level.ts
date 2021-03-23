@@ -6,6 +6,6 @@ export enum Level {
 
 export const levelConfig: Record<Level, number> = {
   "Duh!": 6,
-  Lagom: 10,
-  Mastery: 16,
+  Lagom: 12,
+  Mastery: 18,
 };

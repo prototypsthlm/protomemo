@@ -19,7 +19,7 @@ export const GameLayout: React.FC<GameLayoutProps> = ({ gameId }) => {
   const gameData = mockGames[gameId];
 
   return (
-    <Box minHeight="100vh">
+    <Box minHeight="100vh" paddingBottom={16}>
       {level ? (
         <Game game={generateGame(gameData)(level)} />
       ) : (

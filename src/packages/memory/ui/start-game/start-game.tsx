@@ -17,8 +17,8 @@ export const StartGame: React.FC<StartGameProps> = ({
   return (
     <Center height="100vh">
       <Stack direction="column" spacing={8} alignItems="center">
-        <Heading>Welcome to {gameTitle}</Heading>
-        <Text>Pick a level you can handle!</Text>
+        <Heading size="lg">Welcome to {gameTitle}</Heading>
+        <Text fontSize="lg">Pick a level you can handle!</Text>
         <RadioGroup
           value={level}
           onChange={(value) => setLevel(value as Level)}
@@ -26,13 +26,15 @@ export const StartGame: React.FC<StartGameProps> = ({
         >
           <Stack direction="row" spacing={8}>
             {Object.keys(Level).map((level) => (
-              <Radio value={level}>{level}</Radio>
+              <Radio value={level} colorScheme="pink">
+                {level}
+              </Radio>
             ))}
           </Stack>
         </RadioGroup>
         <Button
           size="lg"
-          colorScheme="blue"
+          colorScheme="pink"
           onClick={() => onSelectLevel(level)}
         >
           Play

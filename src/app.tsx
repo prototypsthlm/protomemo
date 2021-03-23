@@ -12,7 +12,7 @@ export const App = () => {
           <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route path="/memory/:gameId">
+          <Route path="/games/:gameId">
             <MemoryPage />
           </Route>
         </Switch>

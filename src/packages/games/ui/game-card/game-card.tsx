@@ -11,7 +11,7 @@ interface GameCardProps {
 
 export const GameCard: React.FC<GameCardProps> = ({ game }) => {
   return (
-    <Link to={`/memory/${game.id}`}>
+    <Link to={`/games/${game.id}`}>
       <Box
         _hover={{ boxShadow: "2xl" }}
         transition="0.2s ease-in"
@@ -32,7 +32,9 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
             ))}
           </Stack>
           <Heading size="lg">{game.title}</Heading>
-          <Text>{game.description}</Text>
+          <Text fontSize="lg" color="gray.600">
+            {game.description}
+          </Text>
         </VStack>
       </Box>
     </Link>
